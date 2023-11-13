@@ -30,9 +30,15 @@ console.log("Running application from app.js");
 
 // console.log(john);
 
-const { getPokemonById } = require("./js-foundation/06-promises");
+// const { getPokemonById } = require("./js-foundation/06-promises");
 
-getPokemonById(1)
-  .then((pokemon) => console.log({ pokemon }))
-  .catch((err) => console.log(err.message))
-  .finally(() => console.log("Finished"));
+// getPokemonById(1)
+//   .then((pokemon) => console.log({ pokemon }))
+//   .catch((err) => console.log(err.message))
+//   .finally(() => console.log("Finished"));
+
+const { buildLogger } = require("./plugins")
+const logger = buildLogger("app.js");
+
+logger.log("Hello from app.js");
+logger.error("Error from app.js");
