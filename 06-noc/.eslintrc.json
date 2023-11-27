@@ -1,0 +1,10 @@
+{
+  "extends": ["eslint-config-codely/typescript"],
+  "parserOptions": {
+    "project": ["./tsconfig.json"]
+  },
+  "rules": {
+    "no-console": "off",
+    "@typescript-eslint/no-floating-promises": 0
+  }
+}
