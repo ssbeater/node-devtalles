@@ -1,6 +1,10 @@
+# dependencies and build
 node_modules
 dist
 
 # logs
 .DS_Store
 logs
+
+# Environment variables
+.env
