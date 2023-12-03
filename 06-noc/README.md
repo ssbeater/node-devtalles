@@ -11,10 +11,7 @@ MAILER_EMAIL=gridman@gridman.com
 MAILER_SECRET_KEY=123456
 PROD=false
 ```
-3. Instalar dependencias
-```
-npm install
-```
+3. Instalar dependencias `npm install`
 
 # Scripts
 ### Desarrollo: 
