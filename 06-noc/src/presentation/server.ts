@@ -1,10 +1,16 @@
+// const emailService = new EmailService();
 // const logRepository = new LogRepositoryImpl(new LogFileSystem());
 
 export class Server {
 	public static start(): void {
 		console.log("Server started...");
 
-		// const emailService = new EmailService();
+		// new SendEmailLogs(emailService, logRepository).execute([
+		// 	"santiagosuarez@fymtech.com",
+		// 	"santiagosuarez.beater@outlook.com",
+		// ]);
+
+		// const emailService = new EmailService(logRepository);
 		// emailService.sendEmailWithFileSystemLogs([
 		// 	"santiagosuarez@fymtech.com",
 		// 	"santiagosuarez.beater@outlook.com",

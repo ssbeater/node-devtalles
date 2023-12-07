@@ -16,10 +16,10 @@ interface SendMailOptions {
 
 export class EmailService {
 	private readonly transporter = createTransport({
-		service: envs.MAILER_SERVICE,
+		service: envs.MAILER_SERVICE as string,
 		auth: {
-			user: envs.MAILER_EMAIL,
-			pass: envs.MAILER_SECRET_KEY,
+			user: envs.MAILER_EMAIL as string,
+			pass: envs.MAILER_SECRET_KEY as string,
 		},
 	});
 
@@ -27,15 +27,13 @@ export class EmailService {
 		const { to, subject, htmlBody, attachments = [] } = options;
 
 		try {
-			const sendInformation = await this.transporter.sendMail({
+			// const sentInformation =
+			await this.transporter.sendMail({
 				to,
 				subject,
 				html: htmlBody,
 				attachments,
 			});
-			console.log("1");
-
-			console.log(sendInformation);
 
 			return true;
 		} catch (error) {
@@ -46,7 +44,7 @@ export class EmailService {
 	async sendEmailWithFileSystemLogs(to: string | string[]): Promise<boolean> {
 		const subject = "Sever logs";
 		const htmlBody = `
-      <h3>Server logs</h3>
+      <h2>Server logs</h2>
       <p>Watch logs</p>
     `;
 		const attachments: Attachement[] = [{ filename: "logs-all.txt", path: "./logs/logs-all.log" }];
