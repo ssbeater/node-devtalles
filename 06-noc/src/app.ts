@@ -12,5 +12,21 @@ async function main() {
 		dbName: envs.MONGO_DB_NAME,
 	});
 
+	// const newLog = await prisma.logModel.create({
+	// 	data: {
+	// 		level: "HIGH",
+	// 		message: "Test message",
+	// 		origin: "app.ts",
+	// 	},
+	// });
+	// console.log(newLog);
+
+	// const logs = await prisma.logModel.findMany({
+	// 	where: {
+	// 		level: "MEDIUM",
+	// 	},
+	// });
+	// console.log(logs);
+
 	Server.start();
 }

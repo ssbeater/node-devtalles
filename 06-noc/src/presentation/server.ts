@@ -1,15 +1,16 @@
-import { LogSeverityLevel } from "../domain/entities/log.entity";
+import { LogFileSystemDataSource } from "../infrastructure/datasources/log.file-system";
 import { LogMongoDbDataSource } from "../infrastructure/datasources/log.mongodb";
+import { LogPostgresDataSource } from "../infrastructure/datasources/log.postgres";
 import { LogRepositoryImpl } from "../infrastructure/repositories/log.repository";
 
 // const emailService = new EmailService();
-const logRepository = new LogRepositoryImpl(
-	// new LogFileSystemDataSource(),
-	new LogMongoDbDataSource(),
-);
+const mongoLogRepository = new LogRepositoryImpl(new LogMongoDbDataSource());
+const postgresLogRepository = new LogRepositoryImpl(new LogPostgresDataSource());
+const fileSystemLogRepository = new LogRepositoryImpl(new LogFileSystemDataSource());
 
 export class Server {
-	public static async start(): Promise<void> {
+	// public static async start(): Promise<void> {
+	public static start(): void {
 		console.log("Server started...");
 
 		// new SendEmailLogs(emailService, logRepository).execute([
@@ -39,7 +40,25 @@ export class Server {
 		// 	new CheckService(logRepository).execute(url);
 		// });
 
-		const logs = await logRepository.getLogs(LogSeverityLevel.low);
-		console.log(logs);
+		// // *** Multiple logs ***
+		// CronService.createJob("*/5 * * * * *", () => {
+		// 	const url = "https://www.google.com";
+		// 	// const url = "https://localhost:3000";
+		// 	new CheckServiceMultiple([
+		// 		mongoLogRepository,
+		// 		postgresLogRepository,
+		// 		fileSystemLogRepository,
+		// 	]).execute(url);
+		// });
+
+		// const newLog = new LogEntity({
+		// 	level: LogSeverityLevel.low,
+		// 	message: "Test message using other data source",
+		// 	origin: "app.ts",
+		// });
+		// await logRepository.saveLog(newLog);
+
+		// const logs = await logRepository.getLogs(LogSeverityLevel.low);
+		// console.log(logs);
 	}
 }
