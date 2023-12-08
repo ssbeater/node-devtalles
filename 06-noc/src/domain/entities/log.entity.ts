@@ -37,4 +37,26 @@ export class LogEntity {
 
 		return log;
 	}
+
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
+	static fromObject(object: { [key: string]: any }): LogEntity {
+		const { message, level, origin, createdAt } = object;
+
+		if (!message || !level || !origin) {
+			throw new Error("Invalid object");
+		}
+
+		if (createdAt && !(createdAt instanceof Date)) {
+			throw new Error("Invalid object");
+		}
+
+		const log = new LogEntity({
+			message: message as string,
+			level: level as LogSeverityLevel,
+			origin: origin as string,
+			createdAt: createdAt as Date,
+		});
+
+		return log;
+	}
 }

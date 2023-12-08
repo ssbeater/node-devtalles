@@ -1,8 +1,15 @@
+import { LogSeverityLevel } from "../domain/entities/log.entity";
+import { LogMongoDbDataSource } from "../infrastructure/datasources/log.mongodb";
+import { LogRepositoryImpl } from "../infrastructure/repositories/log.repository";
+
 // const emailService = new EmailService();
-// const logRepository = new LogRepositoryImpl(new LogFileSystem());
+const logRepository = new LogRepositoryImpl(
+	// new LogFileSystemDataSource(),
+	new LogMongoDbDataSource(),
+);
 
 export class Server {
-	public static start(): void {
+	public static async start(): Promise<void> {
 		console.log("Server started...");
 
 		// new SendEmailLogs(emailService, logRepository).execute([
@@ -31,5 +38,8 @@ export class Server {
 		// 	// const url = "https://localhost:3000";
 		// 	new CheckService(logRepository).execute(url);
 		// });
+
+		const logs = await logRepository.getLogs(LogSeverityLevel.low);
+		console.log(logs);
 	}
 }
