@@ -1,7 +1,7 @@
 {
   "extends": ["eslint-config-codely/typescript"],
   "parserOptions": {
-    "project": ["./tsconfig.json"]
+    "project": ["./tsconfig.eslint.json"]
   },
   "rules": {
     "no-console": "off",

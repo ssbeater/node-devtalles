@@ -16,10 +16,10 @@ interface SendMailOptions {
 
 export class EmailService {
 	private readonly transporter = createTransport({
-		service: envs.MAILER_SERVICE as string,
+		service: envs.MAILER_SERVICE,
 		auth: {
-			user: envs.MAILER_EMAIL as string,
-			pass: envs.MAILER_SECRET_KEY as string,
+			user: envs.MAILER_EMAIL,
+			pass: envs.MAILER_SECRET_KEY,
 		},
 	});
 

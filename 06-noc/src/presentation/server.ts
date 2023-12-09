@@ -1,12 +1,7 @@
-import { LogFileSystemDataSource } from "../infrastructure/datasources/log.file-system";
-import { LogMongoDbDataSource } from "../infrastructure/datasources/log.mongodb";
-import { LogPostgresDataSource } from "../infrastructure/datasources/log.postgres";
-import { LogRepositoryImpl } from "../infrastructure/repositories/log.repository";
-
 // const emailService = new EmailService();
-const mongoLogRepository = new LogRepositoryImpl(new LogMongoDbDataSource());
-const postgresLogRepository = new LogRepositoryImpl(new LogPostgresDataSource());
-const fileSystemLogRepository = new LogRepositoryImpl(new LogFileSystemDataSource());
+// const mongoLogRepository = new LogRepositoryImpl(new LogMongoDbDataSource());
+// const postgresLogRepository = new LogRepositoryImpl(new LogPostgresDataSource());
+// const fileSystemLogRepository = new LogRepositoryImpl(new LogFileSystemDataSource());
 
 export class Server {
 	// public static async start(): Promise<void> {
