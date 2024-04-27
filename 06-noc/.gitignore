@@ -12,3 +12,8 @@ logs
 # Databases Volumes - Docker
 mongo
 postgres
+mongo-test
+postgres-test
+
+# Test coverage (jest)
+coverage
