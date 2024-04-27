@@ -1,0 +1,8 @@
+# node modules
+node_modules
+
+# environment file
+.env
+
+# certificate files - SLL
+keys
