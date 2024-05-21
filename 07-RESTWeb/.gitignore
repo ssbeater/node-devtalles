@@ -6,3 +6,6 @@ node_modules
 
 # certificate files - SLL
 keys
+
+# build files
+dist
