@@ -9,3 +9,6 @@ keys
 
 # build files
 dist
+
+# docker volumes
+postgres
