@@ -1,5 +1,6 @@
 import express, { Router } from "express";
 import path from "path";
+import http from 'http';
 
 interface Options {
   port: number;
@@ -8,10 +9,12 @@ interface Options {
 }
 
 export class Server {
-  private app = express();
+  public readonly app = express();
   private readonly port: number;
   private readonly publicPath: string;
   private readonly routes: Router;
+
+  private serverListener?: http.Server;
 
   constructor(options: Options) {
     const { port, public_path = "public", routes } = options;
@@ -38,8 +41,12 @@ export class Server {
       res.sendFile(indexPath);
     });
 
-    this.app.listen(this.port, () => {
+    this.serverListener = this.app.listen(this.port, () => {
       console.log(`Server is running on PORT ${this.port} - Gridman`);
     });
+  }
+
+  async close() {
+    this.serverListener?.close();
   }
 }

@@ -3,6 +3,7 @@ node_modules
 
 # environment file
 .env
+.env.test
 
 # certificate files - SLL
 keys
