@@ -17,17 +17,17 @@ export class CategoryController {
   getCategories = async (req: Request, res: Response) => {
     const { page = 1, limit = 10 } = req.query;
     const [error, paginationDto] = PaginationDto.create(+page, +limit);
-    if (error) res.status(400).json({ error });
+    if (error) return res.status(400).json({ error });
 
     this.categoryService
-      .getCategories(paginationDto!, req.body.user)
+      .getCategories(paginationDto!)
       .then((categories) => res.status(200).json(categories))
       .catch((error) => this.handleError(error, res));
   };
 
   createCategory = async (req: Request, res: Response) => {
     const [error, dto] = CreateCategoryDto.create(req.body);
-    if (error) res.status(400).json({ error });
+    if (error) return res.status(400).json({ error });
 
     this.categoryService
       .createCategory(dto!, req.body.user)
