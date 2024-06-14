@@ -1,7 +1,7 @@
 import { Router } from "express";
 import { CategoryController } from "./controller";
-import { AuthMiddleware } from "../middlewares/auth.middleware";
-import { CategoryService } from "../services/category.service";
+import { CategoryService } from "../services";
+import { AuthMiddleware } from "../middlewares";
 
 export class CategoryRoutes {
   static get routes(): Router {
